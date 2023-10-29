@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Button miBoton = findViewById(R.id.button);
         miBoton.setOnClickListener(new View.OnClickListener() {
 
@@ -26,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "¡Botón presionado!", Toast.LENGTH_SHORT).show();
             }
         });
+
 
         Button miBoton2= findViewById(R.id.button2);
         miBoton2.setOnClickListener(new View.OnClickListener() {
@@ -37,9 +37,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
+        miBoton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nombreCiudad = "Ciudad de Prueba";
+                abrirDetailActivity(nombreCiudad);
+            }
+        });
+    }
+    private void abrirDetailActivity(String nombreCiudad){
+        Intent intent = new Intent(this,DetailActivity.class );
+        intent.putExtra("cityName", nombreCiudad);
+        startActivity(intent);
     }
 
 }
